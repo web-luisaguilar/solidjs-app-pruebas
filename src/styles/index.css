@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: sans-serif, 'arial';
+  background-color: #1b1b1b;
+  /*background-color: white;*/
+  color: white;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+}
+canvas {
+  border: thin solid white;
+}
+h1 {
+  font-size: 1.5rem;
+  color: cyan;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}

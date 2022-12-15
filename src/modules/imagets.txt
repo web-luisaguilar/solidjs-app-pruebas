@@ -1,0 +1,86 @@
+import { Mesh, StandardMaterial, Texture, MeshBuilder, Color3, Vector3, Nullable } from '@babylonjs/core';
+import { WorldObjectComponent } from 'js/index';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { BlueprintStampDecorator } from '../decorators';
+import { BaseConstructor } from './BaseConstructor';
+
+// internet video aspect ratio
+const IMAGE_HEIGHT = 6;
+const IMAGE_WIDTH = 10.6;
+
+@BlueprintStampDecorator('image')
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export class ImageConstructor extends BaseConstructor {
+  public readonly height: number = IMAGE_HEIGHT;
+  public readonly width: number = IMAGE_WIDTH;
+  public imageURL: string;
+  public texture: Nullable<Texture> = null;
+
+  constructor({ worldObjectComponent, id }: { worldObjectComponent: WorldObjectComponent; id: string }) {
+    super({
+      name: worldObjectComponent.data.id,
+      obj: worldObjectComponent.data,
+      id: id,
+    });
+
+    this.imageURL = this.defaultImageUrl;
+  }
+
+  private get defaultImageUrl(): string {
+    const possibleValue = this.worldEntityObject.blueprintValues?.filter((value) => value?.id === 'image')[0];
+    if (possibleValue) {
+      return possibleValue.value;
+    }
+    return '';
+  }
+
+  public init = () => {
+    this.loadedMesh = this.createPlane();
+    this.editorMetaData();
+    this.syncFromAssetTransform();
+  };
+
+  public syncBlueprintValue = ({ value }: { value: string }) => {
+    this.imageURL = value;
+    if (this.texture) {
+      this.texture.dispose();
+    }
+
+    const loadedMesh = this.loadedMesh;
+    if (loadedMesh) {
+      const mesh = loadedMesh as Mesh;
+      const mat = mesh!.material as StandardMaterial;
+      mat.diffuseTexture = this.createTexture();
+    }
+  };
+
+  private createPlane = (): Mesh => {
+    const plane = MeshBuilder.CreatePlane(`plane-${this.name}`, { height: this.height, width: this.width }, this._scene);
+    plane.material = this.createMaterial();
+    plane.position.y = this.height / 2;
+    const assetTransform = this.assetTransfrom;
+
+    if (assetTransform) {
+      assetTransform.updatePosition({ pos: new Vector3(assetTransform.position?.x, plane.position.y, assetTransform.position?.z) });
+    }
+    return plane;
+  };
+
+  private createMaterial = (): StandardMaterial => {
+    const planeMaterial = new StandardMaterial(`planeMat-${this.name}`, this._scene);
+    planeMaterial.diffuseTexture = this.createTexture();
+    planeMaterial.specularColor = Color3.White();
+    planeMaterial.ambientColor = Color3.White();
+    planeMaterial.diffuseTexture.hasAlpha = true;
+    planeMaterial.backFaceCulling = false;
+    
+    return planeMaterial;
+  };
+
+  private createTexture = (): Texture => {
+    const imageTexture = new Texture(this.imageURL, this._scene);
+    imageTexture.hasAlpha = true;
+    this.texture = imageTexture;
+    return imageTexture;
+  };
+}
