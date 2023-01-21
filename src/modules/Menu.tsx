@@ -1,17 +1,17 @@
-import Assets from './Assets';
-import SideBar from './SideBar';
-import { asset, assets } from './Dropdown/data';
-import { createEffect, createSignal } from 'solid-js';
+import Assets from './Assets'
+import SideBar from './SideBar'
+import { asset, assets } from './Dropdown/data'
+import { createEffect, createSignal } from 'solid-js'
 
 const Menu = () => {
-  const [showProps, setShowProps] = createSignal<boolean>(false);
-  const [showSideBar, setShowSideBar] = createSignal<boolean>(true);
+  const [showProps, setShowProps] = createSignal<boolean>(false)
+  const [showSideBar, setShowSideBar] = createSignal<boolean>(true)
 
   const handleClick = (data: asset) => {
-    console.log(data);
-    setShowProps(true);
-    setShowSideBar(false);
-  };
+    console.log(data)
+    setShowProps(true)
+    setShowSideBar(false)
+  }
 
   return (
     <div class="relative">
@@ -24,6 +24,6 @@ const Menu = () => {
         showSideBar={showSideBar()}
       />
     </div>
-  );
-};
-export default Menu;
+  )
+}
+export default Menu
