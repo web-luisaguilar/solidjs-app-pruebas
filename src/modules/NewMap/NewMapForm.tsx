@@ -56,6 +56,7 @@ export const NewMapForm = () => {
   }
 
   console.log(Object.values(TabType))
+  const tabsIDs = ['newMap-input', 'newMap-submit', 'newMap-cancel']
 
   const handleTab = (e: KeyboardEvent) => {
     if (e.key == 'Tab') {
@@ -63,6 +64,7 @@ export const NewMapForm = () => {
       e.stopPropagation()
       const target = e.target as HTMLElement
       const tabsIDs = Object.values(TabType)
+      console.log(tabsIDs.indexOf('tests'))
       if (tabsIDs.indexOf(target.id) == 0) {
         setCountTab(0)
       } else {
@@ -91,7 +93,10 @@ export const NewMapForm = () => {
   }
   //createEffect(() => {
   //  window.addEventListener('keydown', handleTab)
+<<<<<<< HEAD
   //  document.activeElement.name ? document.activeElement.name : null
+=======
+>>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
   //})
 
   return (

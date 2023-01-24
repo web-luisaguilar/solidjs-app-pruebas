@@ -10,7 +10,11 @@
 //  setActive(false)
 //}
 
+<<<<<<< HEAD
 import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
+=======
+import { createEffect, createSignal } from 'solid-js'
+>>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
 import { NewMapForm } from './NewMap/NewMapForm'
 
 const Pruebas = () => {
@@ -79,6 +83,7 @@ const Pruebas = () => {
   //  e.preventDefault()
   //}
 
+<<<<<<< HEAD
   const [input, setInput] = createSignal()
   const calcHeight = (value) => {
     let numberOfLineBreaks = (value.match(/\n/g) || []).length
@@ -105,6 +110,11 @@ const Pruebas = () => {
     <>
       <div
         onkeydown={(e) => console.log(e.key)}
+=======
+  return (
+    <>
+      <div
+>>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
         id="box"
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
@@ -118,6 +128,7 @@ const Pruebas = () => {
           <button tabIndex={0}> submit</button>
           <br />
         </div>*/}
+<<<<<<< HEAD
         {/*<canvas class="w-screen h-screen absolute top-0  bg-green-400/10 left-0 z-50"></canvas>
         <NewMapForm />
         <textarea cols="30" rows="1" class="w-1/4 resize-textarea"></textarea>*/}
@@ -129,6 +140,10 @@ const Pruebas = () => {
             contenteditable={true}
           ></span>
         </div>
+=======
+        <canvas class="w-screen h-screen absolute top-0  bg-green-400/10 left-0 z-50"></canvas>
+        <NewMapForm />
+>>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
         {/*<input type="text" />
         <input
           class=" border-2 rounded-lg focus:outline-blue-500"
