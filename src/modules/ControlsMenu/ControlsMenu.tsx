@@ -72,6 +72,7 @@ const ControlsMenu = () => {
         setMenu(false)
         console.log('click')
       }}
+      onClick={() => {}}
     >
       <Show when={menu()}>
         <div class="fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 min-w-[500px] min-h-[300px] overflow-auto  max-w-[800px] max-h-[800px] bg-black/60 text-white/60 rounded-md font-interSemiBold text-lg lg:text-xl p-2">
