@@ -10,12 +10,10 @@
 //  setActive(false)
 //}
 
-<<<<<<< HEAD
-import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
-=======
-import { createEffect, createSignal } from 'solid-js'
->>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
-import { NewMapForm } from './NewMap/NewMapForm'
+//import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
+//import { NewMapForm } from './NewMap/NewMapForm'
+//import { EditHotspot } from './Hotspots/EditHotspots'
+import { createEffect } from 'solid-js'
 
 const Pruebas = () => {
   //const [active, setActive] = createSignal(false)
@@ -83,42 +81,58 @@ const Pruebas = () => {
   //  e.preventDefault()
   //}
 
-<<<<<<< HEAD
-  const [input, setInput] = createSignal()
-  const calcHeight = (value) => {
-    let numberOfLineBreaks = (value.match(/\n/g) || []).length
-    // min-height + lines x line-height + padding + border
-    let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2
-    return newHeight
-  }
+  //const [input, setInput] = createSignal('')
+  //const calcHeight = (value) => {
+  //  let numberOfLineBreaks = (value.match(/\n/g) || []).length
+  //  // min-height + lines x line-height + padding + border
+  //  let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2
+  //  console.log(newHeight)
+  //  return newHeight
+  //}
 
+  //createEffect(() => {
+  //  const textarea: HTMLSpanElement =
+  //    document.querySelector('.resize-textArea')!
+  //  textarea?.addEventListener('keyup', () => {
+  //    textarea.style.height = `${calcHeight(textarea.textContent)}px`
+  //  })
+  //})
+
+  //const handleInput = (e) => {
+  //  //setInput(e.target.textContent)
+  //  //console.log(e.target.textContent)
+  //  ////console.log(e.target.textContent)
+  //  ////console.log(input())
+  //  //e.target.textContent=getInspectObj()?.metadata?.hotspots[uiState().activeHotspot]
+  //  //  ?.description}
+  //}
   createEffect(() => {
-    const textarea = document.querySelector(
-      '.resize-textArea'
+    const box = document.querySelector(
+      '[data-autoresize]'
     ) as HTMLTextAreaElement
-    textarea.addEventListener('keyup', () => {
-      textarea.style.height = `${calcHeight(textarea.textContent)}px`
+    const offset = box.offsetHeight - box.clientHeight
+    box.addEventListener('input', (e) => {
+      const target = e.target as HTMLTextAreaElement
+      target.style.height = 'auto'
+      target.style.height = target.scrollHeight + offset + 'px'
+      console.log(target.scrollHeight + offset)
+      console.log(offset)
     })
   })
-
-  const handleChange = (e) => {
-    setInput(e.target.textContent)
-    console.log(e.target.textContent)
-    console.log(input())
-  }
   return (
     <>
       <div
-        onkeydown={(e) => console.log(e.key)}
-=======
-  return (
-    <>
-      <div
->>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
+        //onkeydown={(e) => console.log(e.key)}
         id="box"
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
+        <textarea
+          class="w-[300px] !overflow-visible h-auto"
+          data-autoresize
+          rows="1"
+        ></textarea>
+        {/*<EditHotspot />*/}
         {/*<div tabIndex={-1}>
           <input type="text" tabIndex={2} />
           <br />
@@ -128,22 +142,24 @@ const Pruebas = () => {
           <button tabIndex={0}> submit</button>
           <br />
         </div>*/}
-<<<<<<< HEAD
         {/*<canvas class="w-screen h-screen absolute top-0  bg-green-400/10 left-0 z-50"></canvas>
         <NewMapForm />
         <textarea cols="30" rows="1" class="w-1/4 resize-textarea"></textarea>*/}
-        <div class="w-1/4">
+        {/*<div class="w-1/4">
           <span
-            onInput={(e) => handleChange(e)}
+            onInput={(e) => handleInput(e)}
             class="textarea resize-textarea"
             role="textbox"
             contenteditable={true}
+            textContent={''}
           ></span>
-        </div>
-=======
-        <canvas class="w-screen h-screen absolute top-0  bg-green-400/10 left-0 z-50"></canvas>
-        <NewMapForm />
->>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
+          <div class="w-full">
+            <p class="text-white w-full break-words">
+              ymtrsymtrymtrsymtrymtrsymtrymtrsymtrymtrsymtrymtrsymtrymtrsymtrymtrsymtrjfopesaifdj
+              fpsoi f
+            </p>
+          </div>
+        </div>*/}
         {/*<input type="text" />
         <input
           class=" border-2 rounded-lg focus:outline-blue-500"

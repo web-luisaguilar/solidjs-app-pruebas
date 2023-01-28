@@ -93,10 +93,7 @@ export const NewMapForm = () => {
   }
   //createEffect(() => {
   //  window.addEventListener('keydown', handleTab)
-<<<<<<< HEAD
   //  document.activeElement.name ? document.activeElement.name : null
-=======
->>>>>>> b28ed35f0435c989fef36a710a74ee8b71180fb5
   //})
 
   return (

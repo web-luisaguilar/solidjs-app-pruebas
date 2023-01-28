@@ -67,7 +67,7 @@ export function EditHotspot() {
       saveHotspot()
     }
   }
-
+  const test = '' | 'test'
   const saveHotspot = () => {
     const inspectObj = getInspectObj()
     if (!inspectObj) {
@@ -84,20 +84,20 @@ export function EditHotspot() {
     inspectObj.saveHotspotData()
   }
 
-  const calcHeight = (value) => {
-    const numberOfLineBreaks = (value.match(/\n/g) || []).length
-    // min-height + lines x line-height + padding + border
-    const newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2
-    return newHeight
-  }
+  //const calcHeight = (value) => {
+  //  const numberOfLineBreaks = (value.match(/\n/g) || []).length
+  //  // min-height + lines x line-height + padding + border
+  //  const newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2
+  //  return newHeight
+  //}
 
-  createEffect(() => {
-    const textarea: HTMLInputElement =
-      document.querySelector('.resize-textArea')
-    textarea.addEventListener('keyup', () => {
-      textarea.style.height = `${calcHeight(textarea.value)}px`
-    })
-  })
+  //createEffect(() => {
+  //  const textarea: HTMLInputElement =
+  //    document.querySelector('.resize-textArea')
+  //  textarea.addEventListener('keyup', () => {
+  //    textarea.style.height = `${calcHeight(textarea.textContent)}px`
+  //  })
+  //})
 
   return (
     <div
@@ -108,7 +108,7 @@ export function EditHotspot() {
         '-webkit-backdrop-filter': 'blur(42px)',
       }}
     >
-      <div class="w-full grid grid-cols-4 items-center justify-center mb-3 space-x-4">
+      {/*<div class="w-full grid grid-cols-4 items-center justify-center mb-3 space-x-4">
         <h2 class="col-span-3 px-2 font-interMedium text-white text-lg text-left">
           Hotspot Information
         </h2>
@@ -204,7 +204,8 @@ export function EditHotspot() {
         >
           Save Hotspot
         </button>
-      </div>
+      </div> * /} 
+      'test'
     </div>
   )
 }
