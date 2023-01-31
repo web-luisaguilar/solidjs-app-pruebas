@@ -36,7 +36,7 @@ h1 {
   padding: 1px 6px;
   display: block;
   overflow: hidden;
-  resize: vertical;
+  resize: horizontal;
   min-height: 40px;
   line-height: 20px;
   background-color: white;

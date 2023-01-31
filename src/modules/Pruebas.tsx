@@ -13,7 +13,7 @@
 //import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 //import { NewMapForm } from './NewMap/NewMapForm'
 //import { EditHotspot } from './Hotspots/EditHotspots'
-import { createEffect } from 'solid-js'
+import { createEffect, onMount } from 'solid-js'
 
 const Pruebas = () => {
   //const [active, setActive] = createSignal(false)
@@ -106,19 +106,25 @@ const Pruebas = () => {
   //  //e.target.textContent=getInspectObj()?.metadata?.hotspots[uiState().activeHotspot]
   //  //  ?.description}
   //}
+
   createEffect(() => {
     const box = document.querySelector(
       '[data-autoresize]'
     ) as HTMLTextAreaElement
     const offset = box.offsetHeight - box.clientHeight
-    box.addEventListener('input', (e) => {
+    box.value =
+      'lksajfodkajkflidskaijfñldskjfñlaskdfjñlñdlaskfjdsñlakfjdaslfjasdlñfkjsadlñdñjfasldñkfjdsañlkfjfasldñkfjdsañlkfjdaslñkffasldñkfjdsañlkfjdaslñkfdaslñkfjlñsdakfjasñlkdfjñaslkdfjñasldkfjñasldkjfñsalkfdjdsñalfkjlasñdjflsaj'
+    console.log(box.scrollHeight + offset + 'px')
+    //box.classList.add(`h-[${box.scrollHeight + offset + 'px'}]`)
+    box.style.height = box.scrollHeight + offset + 'px'
+    console.log(box.style.height)
+    const changeSize = (e) => {
       const target = e.target as HTMLTextAreaElement
-      target.style.height = 'auto'
       target.style.height = target.scrollHeight + offset + 'px'
-      console.log(target.scrollHeight + offset)
-      console.log(offset)
-    })
+    }
+    box.addEventListener('input', changeSize)
   })
+
   return (
     <>
       <div
@@ -127,11 +133,42 @@ const Pruebas = () => {
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
-        <textarea
-          class="w-[300px] !overflow-visible h-auto"
+        <div
+          tabIndex={-1}
+          oninput={(e) => {
+            const target = e.target as HTMLTextAreaElement
+            target.style.height = '10px'
+          }}
+          name="test"
+          autocomplete="on"
+          class="w-[300px] overflow-hidden "
           data-autoresize
           rows="1"
-        ></textarea>
+        ></div>
+        <table class="w-[300px] flex">
+          <tbody class="w-full flex">
+            <tr class="w-full flex">
+              <td class="text-black bg-white flex-wrap overflow-hidden resize-none w-full break-words">
+                adslkfhjlksadfjlñsdakfjñladskfjañlsdkfdsafjdslkafasfadsffjdlsakfjsdafjldakjfkladsjflkasñ
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <textarea class="text-black bg-white flex-wrap w-1/8 break-all">
+          adslkfhjlksadfjlñsdakfjñladskfjalkfajdslfkdjsañflkdjsafñlsdjjflñkadsjfñladskjflñlsdkfdsafjdslkafasfadsffjdlsakfjsdafjldakjfkladsjflkasñ
+        </textarea>
+        <div class="text-white">
+          <p tabIndex={2}>1er parrafo</p>
+          <p tabIndex={3}>2do parrafo</p>
+          <p tabIndex={4}>3ro parrafo</p>
+          <p tabIndex={1}>4to parrafo</p>
+          <p tabIndex={5}>5to parrafo</p>
+        </div>
+
+        <div class="absolute text-white top-0 left-1/2 -translate-x-1/2">
+          cfdlksajflkdsajlkasdjfñlkasdjfñlasdjfflkdasjfñlaskdjfaslñentrame
+        </div>
         {/*<EditHotspot />*/}
         {/*<div tabIndex={-1}>
           <input type="text" tabIndex={2} />
