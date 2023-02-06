@@ -107,23 +107,35 @@ const Pruebas = () => {
   //  //  ?.description}
   //}
 
-  createEffect(() => {
-    const box = document.querySelector(
-      '[data-autoresize]'
-    ) as HTMLTextAreaElement
-    const offset = box.offsetHeight - box.clientHeight
-    box.value =
-      'lksajfodkajkflidskaijfñldskjfñlaskdfjñlñdlaskfjdsñlakfjdaslfjasdlñfkjsadlñdñjfasldñkfjdsañlkfjfasldñkfjdsañlkfjdaslñkffasldñkfjdsañlkfjdaslñkfdaslñkfjlñsdakfjasñlkdfjñaslkdfjñasldkfjñasldkjfñsalkfdjdsñalfkjlasñdjflsaj'
-    console.log(box.scrollHeight + offset + 'px')
-    //box.classList.add(`h-[${box.scrollHeight + offset + 'px'}]`)
-    box.style.height = box.scrollHeight + offset + 'px'
-    console.log(box.style.height)
-    const changeSize = (e) => {
-      const target = e.target as HTMLTextAreaElement
-      target.style.height = target.scrollHeight + offset + 'px'
-    }
-    box.addEventListener('input', changeSize)
-  })
+  //createEffect(() => {
+  //  const box = document.querySelector(
+  //    '[data-autoresize]'
+  //  ) as HTMLTextAreaElement
+  //  const offset = box.offsetHeight - box.clientHeight
+  //  box.value =
+  //    'lksajfodkajkflidskaijfñldskjfñlaskdfjñlñdlaskfjdsñlakfjdaslfjasdlñfkjsadlñdñjfasldñkfjdsañlkfjfasldñkfjdsañlkfjdaslñkffasldñkfjdsañlkfjdaslñkfdaslñkfjlñsdakfjasñlkdfjñaslkdfjñasldkfjñasldkjfñsalkfdjdsñalfkjlasñdjflsaj'
+  //  console.log(box.scrollHeight + offset + 'px')
+  //  //box.classList.add(`h-[${box.scrollHeight + offset + 'px'}]`)
+  //  box.style.height = box.scrollHeight + offset + 'px'
+  //  console.log(box.style.height)
+  //  const changeSize = (e) => {
+  //    const target = e.target as HTMLTextAreaElement
+  //    target.style.height = target.scrollHeight + offset + 'px'
+  //  }
+  //  box.addEventListener('input', changeSize)
+  //})
+
+  const styles = {
+    'border-radius': '100%',
+    background:
+      'linear-gradient(193deg, rgba(172,255,235,1) 0%, rgba(255,69,69,0.6502976190476191) 100%)',
+    'border-color': 'transparent',
+  }
+  const border = {
+    background:
+      'linear-gradient(195.14deg, rgba(0, 0, 0, 0.35) 26%, rgba(0, 0, 0, 0) 138.1%) padding-box,linear-gradient(193deg, rgba(172,255,235,0.9) 0%, rgba(255,69,69,0.65) 100%) border-box',
+    'border-color': 'transparent',
+  }
 
   return (
     <>
@@ -133,7 +145,13 @@ const Pruebas = () => {
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
-        <div
+        <div class="w-[100px] h-[100px] rounded-full border-8" style={border}>
+          <div class="flex-col">
+            <p>125</p>
+            <p class="-translate-y-2">mph</p>
+          </div>
+        </div>
+        {/*<div
           tabIndex={-1}
           oninput={(e) => {
             const target = e.target as HTMLTextAreaElement
@@ -168,7 +186,7 @@ const Pruebas = () => {
 
         <div class="absolute text-white top-0 left-1/2 -translate-x-1/2">
           cfdlksajflkdsajlkasdjfñlkasdjfñlasdjfflkdasjfñlaskdjfaslñentrame
-        </div>
+        </div>*/}
         {/*<EditHotspot />*/}
         {/*<div tabIndex={-1}>
           <input type="text" tabIndex={2} />
