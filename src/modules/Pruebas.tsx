@@ -13,7 +13,8 @@
 //import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 //import { NewMapForm } from './NewMap/NewMapForm'
 //import { EditHotspot } from './Hotspots/EditHotspots'
-import { createEffect, onMount } from 'solid-js'
+import { createEffect, createSignal, onMount } from 'solid-js'
+import { Boost } from './game/components/Boost'
 
 const Pruebas = () => {
   //const [active, setActive] = createSignal(false)
@@ -125,18 +126,19 @@ const Pruebas = () => {
   //  box.addEventListener('input', changeSize)
   //})
 
-  const styles = {
-    'border-radius': '100%',
-    background:
-      'linear-gradient(193deg, rgba(172,255,235,1) 0%, rgba(255,69,69,0.6502976190476191) 100%)',
-    'border-color': 'transparent',
-  }
-  const border = {
-    background:
-      'linear-gradient(195.14deg, rgba(0, 0, 0, 0.35) 26%, rgba(0, 0, 0, 0) 138.1%) padding-box,linear-gradient(193deg, rgba(172,255,235,0.9) 0%, rgba(255,69,69,0.65) 100%) border-box',
-    'border-color': 'transparent',
-  }
-
+  //const styles = {
+  //  'border-radius': '100%',
+  //  background:
+  //    'linear-gradient(193deg, rgba(172,255,235,1) 0%, rgba(255,69,69,0.6502976190476191) 100%)',
+  //  'border-color': 'transparent',
+  //}
+  //const border = {
+  //  background:
+  //    'linear-gradient(195.14deg, rgba(0, 0, 0, 0.35) 26%, rgba(0, 0, 0, 0) 138.1%) padding-box,linear-gradient(193deg, rgba(172,255,235,0.9) 0%, rgba(255,69,69,0.65) 100%) border-box',
+  //  'border-color': 'transparent',
+  //  animation: 'ping 1s infinite',
+  //}
+  const [active, setActive] = createSignal(true)
   return (
     <>
       <div
@@ -145,12 +147,13 @@ const Pruebas = () => {
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
-        <div class="w-[100px] h-[100px] rounded-full border-8" style={border}>
+        <Boost active={active()} />
+        {/*<div class="w-[100px] h-[100px] rounded-full border-8" style={border}>
           <div class="flex-col">
             <p>125</p>
             <p class="-translate-y-2">mph</p>
           </div>
-        </div>
+        </div>*/}
         {/*<div
           tabIndex={-1}
           oninput={(e) => {

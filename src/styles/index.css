@@ -6,7 +6,7 @@ html {
   box-sizing: border-box;
   font-size: 15px;
   font-family: sans-serif, 'arial';
-  background-color: #1b1b1b;
+  background-color: #1b1b1bd7;
   /*background-color: white;*/
   color: white;
 }
@@ -44,4 +44,12 @@ h1 {
 .textarea[contenteditable]:empty::before {
   content: 'Enter your text';
   color: gray;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
