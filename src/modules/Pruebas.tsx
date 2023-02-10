@@ -16,6 +16,7 @@
 import { createEffect, createSignal, For, onMount } from 'solid-js'
 import { clearDelegatedEvents } from 'solid-js/web/types'
 import { Boost } from './game/components/Boost'
+import { Checkpoint } from './game/components/Checkpoint'
 import { Speed } from './game/components/Speed'
 
 const Pruebas = () => {
@@ -162,7 +163,8 @@ const Pruebas = () => {
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
-        <Speed speed="250" active={false} />
+        {/*<Speed speed="250" active={false} />*/}
+        <Checkpoint yards="50" />
         {/*<Boost active={active()} />*/}
         {/*<div class="w-[100px] h-[100px] rounded-full border-8" style={border}>
           <div class="flex-col">

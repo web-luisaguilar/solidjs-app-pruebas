@@ -23,6 +23,7 @@ export const Speed = (props: SpeedProps) => {
       class=" absolute left-1/2 !-translate-x-1/4 bottom-[40px] flex justify-center items-center rounded-full z-50 outline-offset-2"
       style={{
         width: '198px',
+        //transform: 'rotateY(50deg)',
         height: '198px',
         background: 'rgba(217, 217, 217, 0.25)',
         transform: 'matrix(1, 0, -0.09, 1, 0, 0)',
