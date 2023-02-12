@@ -13,7 +13,7 @@
 //import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 //import { NewMapForm } from './NewMap/NewMapForm'
 //import { EditHotspot } from './Hotspots/EditHotspots'
-import { createEffect, createSignal, For, onMount } from 'solid-js'
+import { createEffect, createSignal, For, onMount, Show } from 'solid-js'
 import { clearDelegatedEvents } from 'solid-js/web/types'
 import { Boost } from './game/components/Boost'
 import { Checkpoint } from './game/components/Checkpoint'
@@ -155,6 +155,7 @@ const Pruebas = () => {
   //    setColor(0)
   //  }, 3000)
   //})
+
   return (
     <>
       <div
@@ -163,9 +164,11 @@ const Pruebas = () => {
         class="text-black w-screen h-screen"
         //onKeyDown={(e) => contador(e)}
       >
-        {/*<Speed speed="250" active={false} />*/}
+        <Speed speed="250" active={false} />
+
         <Checkpoint yards="50" />
-        {/*<Boost active={active()} />*/}
+
+        <Boost />
         {/*<div class="w-[100px] h-[100px] rounded-full border-8" style={border}>
           <div class="flex-col">
             <p>125</p>

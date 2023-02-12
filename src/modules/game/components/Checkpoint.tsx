@@ -1,27 +1,37 @@
-import { Motion } from '@motionone/solid'
-import { createEffect } from 'solid-js'
+import { Motion, Presence } from '@motionone/solid'
+import { createEffect, createSignal, Show } from 'solid-js'
 
 interface CheckpointProps {
   yards: string
 }
 
 export const Checkpoint = (props: CheckpointProps) => {
+  const [hide, setHide] = createSignal(true)
+
+  createEffect(() => {
+    setTimeout(() => {
+      setHide(false)
+    }, 5000)
+  })
   return (
     <div class="absolute top-44 left-1/2 translate-x-1/5  md:top-24 md:left-1/2 md:translate-x-1/3 flex items-center justify-center">
       <div class="flex-col items-center justify-center">
-        <Motion
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: 360 }}
-          exit={{ rotateY: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 1,
-            repeat: 4,
-            easing: 'linear',
-          }}
-        >
-          <img class="m-auto" src={'/src/assets/s-key.jpeg'} />
-        </Motion>
+        <Presence>
+          <Show when={hide()}>
+            <Motion
+              initial={{ rotateY: 0, opacity: 0 }}
+              animate={{ rotateY: 360, opacity: 1 }}
+              exit={{ rotateY: 0, opacity: 0 }}
+              transition={{
+                duration: 1.75,
+                easing: 'linear',
+                delay: 2,
+              }}
+            >
+              <img class="m-auto" src={'/src/assets/s-key.jpeg'} />
+            </Motion>
+          </Show>
+        </Presence>
         <p
           class="text-[#ACFFFA] font-dDinBold w-fit text-2xl pt-2.5"
           style={{

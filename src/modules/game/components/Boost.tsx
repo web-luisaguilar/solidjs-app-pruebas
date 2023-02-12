@@ -1,37 +1,53 @@
-interface BoostProps {
-  active?: Boolean
-}
-export const Boost = (props: BoostProps) => {
+import { createEffect, createSignal, onCleanup, Show } from 'solid-js'
+
+export const Boost = () => {
+  const [boostActive, setBoostActive] = createSignal(false)
+  const handleKeyDown = (e) => {
+    if (e.code == 'Space') {
+      setBoostActive(true)
+    }
+  }
+  const handleKeyUp = (e) => {
+    if (e.code == 'Space') {
+      setBoostActive(false)
+    }
+  }
+  createEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+    onCleanup(() => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    })
+  })
   return (
-    <div class="bg-cover rounded-full flex justify-center items-center absolute right-40 bottom-40">
+    <div
+      id="boostBtn"
+      onpointerdown={(e) => setBoostActive(true)}
+      onPointerUp={(e) => setBoostActive(false)}
+      class="bg-cover rounded-full flex justify-center items-center absolute right-20 bottom-10 md:right-[248px] md:bottom-10"
+      style={{ transform: 'matrix(1, 0, -0.12, 0.99, 0, 0)' }}
+    >
+      <Show when={boostActive()}>
+        <div
+          class={` absolute w-[71px] h-[71px] md:w-[91px] md:h-[91px] outline outline-4 ${
+            boostActive() ? 'animate-ping' : ''
+          } outline-[#ACFFFA8C] rounded-full`}
+        ></div>
+        <p class="absolute -bottom-[42px] md:bottom-4 md:right-[92px] font-dDin text-white text-lg">
+          BOOST!
+        </p>
+      </Show>
       <div
-        class={` absolute w-[91px] h-[91px] outline outline-4 ${
-          props.active ? 'animate-ping' : ''
-        } outline-white/60 rounded-full`}
-        style={
-          props.active
-            ? {
-                'box-shadow': 'inset 0 0px 4px 0 rgb(255,255,255,70)',
-              }
-            : {}
-        }
-      ></div>
-      <div class="w-[67px] h-[67px] bg-blue-500/50 flex rounded-full justify-center items-center outline-white outline-2 outline outline-offset-4 ">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-bolt"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="white"
-          fill="white"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-        </svg>
+        class={`w-[50px] h-[50px] md:w-[67px] md:h-[67px] duration-500 ${
+          boostActive() ? 'bg-[#4C93FAF0]' : 'bg-[#cacacaaa]'
+        } flex rounded-full justify-center items-center  ${
+          boostActive()
+            ? 'outline outline-2 outline-[#ACFFFA]'
+            : 'outline-none border-4 border-[rgba(217, 217, 217, 0.25)]'
+        } outline-offset-4`}
+      >
+        <img src="" alt="" />
       </div>
     </div>
   )
